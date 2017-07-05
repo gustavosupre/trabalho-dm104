@@ -58,9 +58,10 @@ function criaDiv () {
   return div;
 }
 
-function criaBotaoComprar (id) {
+function criaBotaoComprar (id) { //
   var div = document.createElement('div');
   div.setAttribute("id", "btncomprar-" + id);
+  div.setAttribute("onClick", "addSacola(" + id + ")");
   div.innerHTML = "Comprar";
   return div;
 }
@@ -85,9 +86,10 @@ produtos.forEach(function(elementoDaArray) {
     //montando conteudo
     ul.appendChild(li).appendChild(img);
       li.appendChild(section);
-        section.appendChild(h3);
-        h3.appendChild(referencia);
-        h3.appendChild(preco);
+      section.appendChild(h3);
+      h3.appendChild(referencia)
+      h3.appendChild(preco);
+        section.appendChild(descricao);
         section.appendChild(div);
           div.appendChild(botatocomprar);
 });
