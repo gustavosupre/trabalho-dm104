@@ -7,12 +7,12 @@ body, html {margin: 0; padding: 0; font-family: 'Raleway', sans-serif; font-weig
 *{margin: 0; padding: 0}
 
 h1 {font-size: 1.5em; margin-bottom: 20px;}
-    h1 span::after {content: "/"; margin: 0 5px; color: orange; font-weight: bold;}
+    h1 span::after {content: "/"; margin: 0 5px; color: blue; font-weight: bold;}
 h2 { text-transform: lowercase; height: 100px; overflow: hidden; font-size: 16px;}
 h3 {font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif; font-weight: normal;}
 
 
-header {position: fixed; top: 0; left: 0; z-index: 8; width: 100%; background-color: orange; text-align: center;}
+header {position: fixed; top: 0; left: 0; z-index: 8; width: 100%; background-color: blue; text-align: center;}
     header section {width: 1000px; display: inline-block; padding: 12px 0; text-align: left;}
     header section > div {float: left;}
     /*Logo*/
@@ -41,11 +41,11 @@ main {position:relative; margin: 100px auto 50px auto; width: 1000px;}
 
     /*Seção Botão comprar*/
     main section > div {width: 100%; padding-top: 10px; color: #FFF; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif; font-size: 16px; font-weight: bold; font-style: italic; text-align: right; }
-    main section > div > div {display: inline-block;background-color: orange; padding: 10px; color: #FFF; font-style: italic; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;}
-        main section > div > div:hover {background-color: darkorange;}
+    main section > div > div {display: inline-block;background-color: blue; padding: 10px; color: #FFF; font-style: italic; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;}
+        main section > div > div:hover {background-color: darkblue;}
 
 
-footer {display: block; position: relative; background-color: darkorange; height: 300px;}
+footer {display: block; position: relative; background-color: darkblue; height: 300px;}
 
 
 #produtoadicionado {position: fixed; top: 20px; z-index: 1; right:calc(50% - 80px); background-color: rgba(0,100,0,0.8); color: #FFF; font-size: 14px; font-weight: bold; text-align: center;  width: 160px; line-height: 35px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;}
@@ -62,6 +62,18 @@ footer {display: block; position: relative; background-color: darkorange; height
     padding: 10px;
     background-color: #FFF;
 }
+     #minhasacolacompleta ul {list-style: none;}
+     #minhasacolacompleta ul li {display: inline-block;}
+     #minhasacolacompleta ul li > div:nth-child(1) {float:left; width: 61px; height: 92px; border: 1px solid #CCC; margin-right: 5px;}
+        #minhasacolacompleta ul li > div:nth-child(1) img {width: 100%;}
+     #minhasacolacompleta ul li > div:nth-child(2) {width: 252px; margin-left: 61px; font-size: 12px; height: 30px; font-weight: bold; overflow: hidden;}
+     #minhasacolacompleta ul li > div:nth-child(3) {width: 252px; margin-left: 61px; margin-bottom: 20px; font-size: 12px; font-style: italic;}
+     #minhasacolacompleta ul li > div:nth-child(4) {width: 245px; display: inline-block; font-size: 14px;}
+        #minhasacolacompleta ul li > div:nth-child(4) div:nth-child(1) {float: left; width: 50%;}
+        #minhasacolacompleta ul li > div:nth-child(4) div:nth-child(2) {float: right; width: 50%; text-align: right}
+        #minhasacolacompleta ul li hr {margin: 10px 0; border: none; border-bottom: 1px solid #F3F3F3}
+    #minhasacolacompleta ul li > div:nth-child(5) {clear: left;}
+
 
 #minhasacolacompleta-bg {
     display: none;
@@ -78,7 +90,6 @@ footer {display: block; position: relative; background-color: darkorange; height
  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
  font-size: 18px;
 }
-
 
 
 

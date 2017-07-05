@@ -23,6 +23,7 @@ function addSacola (idproduto) {
     setQtdProdutosSacola()
     animAddProduto();
     montaProdutosSacola();
+    criaNovoProdutoSacola ();
 
     //alert(Array.isArray(ARR_SACOLA))
     //;

@@ -33,3 +33,8 @@ function criaSelectorImg () {
   var criaSelectorImg = document.createElement('img');
   return criaSelectorImg;
 }
+
+function criaSelectorHr () {
+  var criaSelectorHr = document.createElement('hr');
+  return criaSelectorHr;
+}
