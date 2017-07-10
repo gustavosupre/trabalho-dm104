@@ -29,11 +29,9 @@
             <!--
             <li>
                 <img src="images/products/media__dsc0497_e.jpg">
-                <section>
-                    <h3><div>Ref. 001</div><div>R$ 150,00</div></h3>
-                    <h2>CAMISOLA EM LIGANETE COM DETLAHE EM TULE E RENDA -ACOMPANHA 01 CALCINHA FIO</h2>
-                    <div><div>Comprar</div></div>
-                </section>
+                <div><div>Ref. 001</div><div>R$ 150,00</div></div></div>
+                <div>CAMISOLA EM LIGANETE COM DETLAHE EM TULE E RENDA -ACOMPANHA 01 CALCINHA FIO</div>
+                <div><div>Comprar</div></div>
             </li>
             -->
     </main>
@@ -44,8 +42,8 @@
 
     <div id="produtoadicionado"><span class="mif-checkmark"></span>Produto Adicionado!</div>
     <div id="minhasacolacompleta">
-        <div onclick="apagarProdutosSacola()">Minha Sacola</div>
-        <ul id="minhasacolacompleta-ul">
+        <div class="cabecalho"><span onclick="abreMinhaSacola(LsKey_sacola)" title="Esconder sacola" class="mif-shopping-basket"></span>Minha Sacola<span onclick="delLocalStorage(LsKey_sacola)" title="Excluir produtos da sacola" class="mif-bin"></span></div>
+        <ul id="ulminhasacolacompleta">
             <!--
             <li>
                 <div><img src="images/products/media__dsc0497_e.jpg"></div>
@@ -58,16 +56,16 @@
             </li>
             -->
         </ul>
+        <div class="rodape" id="minhasacola_total">Sua sacola está vazia.</div>
     </div>
     <div onclick="abreMinhaSacola();" id="minhasacolacompleta-bg"></div>
 
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/funcoes.js"></script>
-    <script src="js/selectors.js"></script>
+    <script src="js/localStorage.js"></script>
+    <script src="js/criaElementos.js"></script>
+    <script src="js/produtos.js"></script>
     <script src="js/animacoes.js"></script>
-    <script src="js/produtosPagina.js"></script>
-    <script src="js/produtosSacola.js"></script>
-    <script src="js/sacola.js"></script>
 </body>
 </html>
+

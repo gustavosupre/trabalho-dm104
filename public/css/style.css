@@ -31,8 +31,30 @@ main {position:relative; margin: 100px auto 50px auto; width: 1000px;}
     main ul {list-style: none; display: inline-block;}
     main ul li {float: left; width: 23%; box-sizing: border-box; border: 1px solid #F1F1F1; border-radius: 3px; overflow: hidden; margin:0 1% 2% 1%;}
         main ul li:hover {border-color: #DDD;}
-        main ul li img {width: 100%;}
-    main li section {padding: 10px;}
+
+/*Produtos na página*/
+    #ulprodutos li {padding-bottom: 10px;}
+    #ulprodutos li img {width: 100%;}
+    #ulprodutos li .descricao {display:block; height: 50px; overflow: hidden; margin: 0 10px; font-size: 14px; font-weight: bold;}
+    #ulprodutos li hr {margin: 5px 0; border: none; border-top: 1px solid #F0F0F0;}
+    #ulprodutos li .referencia {float:left; width: 50%; line-height: 30px; font-size: 14px; text-align: center; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
+    #ulprodutos li .preco {float:right; width: 50%; line-height: 30px; font-size: 14px; text-align: center; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
+    #ulprodutos li .botaocomprar { margin: 40px 10px 30px 10px;}
+        #ulprodutos li .botaocomprar input{float:right; padding: 7px; font-size: 16px; color: #FFF; font-style: italic; border-radius: 3px; cursor: pointer; border:none; transition: background-color 0.3s ease; background-color: blue; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
+        #ulprodutos li .botaocomprar input:hover {background-color: darkblue;}
+
+/*Produtos na sacola*/
+    #ulminhasacolacompleta {list-style: none; overflow-y:auto; height: 88%; box-sizing:border-box;}
+    #ulminhasacolacompleta li:nth-child(even) {background-color: #F3F3F3;}
+    #ulminhasacolacompleta li:nth-child(odd) {background-color:#FFF;}
+    #ulminhasacolacompleta li {display: inline-block;width:100%; padding: 10px; box-sizing:border-box;}
+    #ulminhasacolacompleta li img {width: 66px; height: 100px; margin-right: 5px; float: left; border:1px solid #CCC;}
+    #ulminhasacolacompleta li .descricao {display:block;  font-size: 12px; font-weight: bold;}
+    #ulminhasacolacompleta li .referencia {display:block; font-style: italic; font-weight: normal; font-size: 12px; margin-bottom: 10px; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
+    #ulminhasacolacompleta li .qtd {float:left; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
+        #ulminhasacolacompleta li .qtd input { padding: 3px; width: 10px;}
+    #ulminhasacolacompleta li .preco {float:right; line-height: 25px; font-size: 14px; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
+        #ulminhasacolacompleta li .preco::after{content: " (und.)"; font-size: 10px;}
 
     main ul li section h3 {width: 100%; margin-bottom: 10px;}
         main ul li section h3 div {display: inline-block; width: 50%;}
@@ -54,26 +76,18 @@ footer {display: block; position: relative; background-color: darkblue; height: 
 #minhasacolacompleta {
     position:fixed;
     z-index: 10;
-    right: -350px;
+    right: -360px;
     top: 0;
     width: 350px;;
     height: 100%;
     box-sizing: border-box;
-    padding: 10px;
     background-color: #FFF;
+    box-shadow: -5px 0 10px #000;
 }
-     #minhasacolacompleta ul {list-style: none;}
-     #minhasacolacompleta ul li {display: inline-block;}
-     #minhasacolacompleta ul li > div:nth-child(1) {float:left; width: 61px; height: 92px; border: 1px solid #CCC; margin-right: 5px;}
-        #minhasacolacompleta ul li > div:nth-child(1) img {width: 100%;}
-     #minhasacolacompleta ul li > div:nth-child(2) {width: 252px; margin-left: 61px; font-size: 12px; height: 30px; font-weight: bold; overflow: hidden;}
-     #minhasacolacompleta ul li > div:nth-child(3) {width: 252px; margin-left: 61px; margin-bottom: 20px; font-size: 12px; font-style: italic;}
-     #minhasacolacompleta ul li > div:nth-child(4) {width: 245px; display: inline-block; font-size: 14px;}
-        #minhasacolacompleta ul li > div:nth-child(4) div:nth-child(1) {float: left; width: 50%;}
-        #minhasacolacompleta ul li > div:nth-child(4) div:nth-child(2) {float: right; width: 50%; text-align: right}
-        #minhasacolacompleta ul li hr {margin: 10px 0; border: none; border-bottom: 1px solid #F3F3F3}
-    #minhasacolacompleta ul li > div:nth-child(5) {clear: left;}
-
+    #minhasacolacompleta .cabecalho {height: 4.5%; padding-top: 6.5%; padding-left: 10px; background-color: darkblue; color: #FFF; font-size: 16px; font-weight: bold;}
+        #minhasacolacompleta .cabecalho span:first-child {float: left; margin: -5px 5px 0 10px; cursor: pointer; font-size: 26px;}
+        #minhasacolacompleta .cabecalho span:last-child {float: right; margin-right: 10px; cursor: pointer;}
+    #minhasacolacompleta .rodape {height: 3.5%; padding:4.5% 20px 0 0; background-color: darkblue; color: #FFF; text-align: right; font-size: 14px; font-weight: normal; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif}
 
 #minhasacolacompleta-bg {
     display: none;
@@ -83,19 +97,12 @@ footer {display: block; position: relative; background-color: darkblue; height: 
     z-index: 9;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0,0,0,0.9);
 }
 
 #minhasacolacompleta-ul{
  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
  font-size: 18px;
 }
-
-
-
-
-
-
-
 
 

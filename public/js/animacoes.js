@@ -12,7 +12,7 @@ function abreMinhaSacola() {
                 $(this).hide();
                 //$("#menuesquerdo-fechar").hide();
         });
-        $('#minhasacolacompleta').animate({right:"-350px"},500);
+        $('#minhasacolacompleta').animate({right:"-360px"},500);
     }
 }
 
