@@ -7,14 +7,14 @@ body, html {margin: 0; padding: 0; font-family: 'PT Sans', sans-serif; font-weig
 *{margin: 0; padding: 0;}
 
 h1 {font-size: 1.5em; margin-bottom: 20px;}
-    h1 span::after {content: "/"; margin: 0 5px; color: blue; font-weight: bold;}
+    h1 span::after {content: "/"; margin: 0 5px; color: orchid; font-weight: bold;}
 h2 { text-transform: lowercase; height: 100px; overflow: hidden; font-size: 16px;}
 h3 {font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif; font-weight: normal;}
 
 .link_branco:link, .link_branco:visited, .link_branco:active {color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s ease-in-out;}
 .link_branco:hover{color: rgba(255,255,255,1);}
 
-header {position: fixed; top: 0; left: 0; z-index: 8; width: 100%; background-color: blue; text-align: center;}
+header {position: fixed; top: 0; left: 0; z-index: 8; width: 100%; background-color: orchid; text-align: center;}
     header section {width: 1000px; display: inline-block; padding: 12px 0; text-align: left;}
     header section > div {float: left;}
     /*Logo*/
@@ -42,8 +42,8 @@ main {position:relative; margin: 100px auto 50px auto; width: 1000px;}
     #ulprodutos li .referencia {float:left; width: 50%; line-height: 30px; font-size: 14px; text-align: center; font-style: italic; color: #666; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
     #ulprodutos li .preco {float:right; width: 50%; line-height: 30px; font-size: 14px; text-align: center; color: #333; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
     #ulprodutos li .botaocomprar { margin: 40px 10px 30px 10px;}
-        #ulprodutos li .botaocomprar input{float:right; padding: 7px; font-size: 16px; color: #FFF; font-style: italic; border-radius: 3px; cursor: pointer; border:none; transition: background-color 0.3s ease; background-color: blue; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
-        #ulprodutos li .botaocomprar input:hover {background-color: darkblue;}
+        #ulprodutos li .botaocomprar input{float:right; padding: 7px; font-size: 16px; color: #FFF; font-style: italic; border-radius: 3px; cursor: pointer; border:none; transition: background-color 0.3s ease; background-color: orchid; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
+        #ulprodutos li .botaocomprar input:hover {background-color: darkorchid;}
 
 /*Produtos na sacola*/
     #ulminhasacolacompleta {list-style: none; overflow-y:auto; height: 88%; box-sizing:border-box;}
@@ -65,11 +65,11 @@ main {position:relative; margin: 100px auto 50px auto; width: 1000px;}
 
     /*Seção Botão comprar*/
     main section > div {width: 100%; padding-top: 10px; color: #FFF; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif; font-size: 16px; font-style: italic; text-align: right; }
-    main section > div > div {display: inline-block;background-color: blue; padding: 10px; color: #FFF; font-style: italic; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;}
-        main section > div > div:hover {background-color: darkblue;}
+    main section > div > div {display: inline-block;background-color: orchid; padding: 10px; color: #FFF; font-style: italic; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;}
+        main section > div > div:hover {background-color: darkorchid;}
 
 
-footer {display: inline-block; position: relative; background-color: darkblue;  width: 100%; padding: 20px 0 50px 0; margin-bottom: -5px; color: #FFF;}
+footer {display: inline-block; position: relative; background-color: darkorchid;  width: 100%; padding: 20px 0 50px 0; margin-bottom: -5px; color: #FFF;}
     footer > div {width: 1000px; margin: 0 auto;}
     footer > div > section {float:left; width: 33%;}
     footer > div > section div {font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 15px; letter-spacing: -1px; text-transform: uppercase; padding: 10px;}
@@ -92,10 +92,10 @@ footer {display: inline-block; position: relative; background-color: darkblue;  
     background-color: #FFF;
     box-shadow: -5px 0 10px #000;
 }
-    #minhasacolacompleta .cabecalho {height: 4.5%; padding-top: 6.5%; padding-left: 10px; background-color: darkblue; color: #FFF; font-size: 16px;}
+    #minhasacolacompleta .cabecalho {height: 4.5%; padding-top: 6.5%; padding-left: 10px; background-color: darkorchid; color: #FFF; font-size: 16px;}
         #minhasacolacompleta .cabecalho span:first-child {float: left; margin: -5px 5px 0 10px; cursor: pointer; font-size: 26px;}
         #minhasacolacompleta .cabecalho span:last-child {float: right; margin-right: 10px; cursor: pointer;}
-    #minhasacolacompleta .rodape {height: 3.5%; padding:4.5% 20px 0 0; background-color: darkblue; color: #FFF; text-align: right; font-size: 14px; font-weight: normal; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif}
+    #minhasacolacompleta .rodape {height: 3.5%; padding:4.5% 20px 0 0; background-color: darkorchid; color: #FFF; text-align: right; font-size: 14px; font-weight: normal; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif}
 
 #minhasacolacompleta-bg {
     display: none;
