@@ -18,7 +18,7 @@ function setSacolaQtdTotal () {
         var soma_total = (item.preco * item.qtd) + soma_total
     }
     document.getElementById("minhasacola_qtd").innerHTML = soma_qtd
-    document.getElementById("minhasacola_total").innerHTML = "Total: "+soma_total.toFixed(2).replace(".",",")
+    document.getElementById("minhasacola_total").innerHTML = "Total: R$ "+soma_total.toFixed(2).replace(".",",")
 
 }
 

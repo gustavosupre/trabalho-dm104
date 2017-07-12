@@ -6,8 +6,11 @@
 body, html {margin: 0; padding: 0; font-family: 'PT Sans', sans-serif; font-weight: normal; font-size: 12px;}
 *{margin: 0; padding: 0;}
 
-h1 {font-size: 1.5em; margin-bottom: 20px;}
-    h1 span::after {content: "/"; margin: 0 5px; color: orchid; font-weight: bold;}
+input[type='submit'] {padding: 7px; font-size: 16px; color: #FFF; font-style: italic; border-radius: 3px; cursor: pointer; box-shadow: none; border: none; border-style color; transition: background-color 0.3s ease; background-color: orchid; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
+input[type='submit']:hover{background-color: darkorchid;}
+h1 {font-size: 1.5em; margin-bottom: 20px; font-weight: normal;}
+    h1 span::after {content: "/"; margin: 0 10px; color: orchid; font-weight: bold;}
+    h1 span:last-child::after {content: "";}
 h2 { text-transform: lowercase; height: 100px; overflow: hidden; font-size: 16px;}
 h3 {font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif; font-weight: normal;}
 
@@ -21,13 +24,23 @@ header {position: fixed; top: 0; left: 0; z-index: 8; width: 100%; background-co
     header section > div:nth-child(1) {width: 28%; text-align: center;}
         header section > div:nth-child(1) img {width: 90%;}
     /*Barra de busca*/
-    header section > div:nth-child(2) {width: 62%; background-color: rgba(255,255,255,0.3); padding: 9px; border-radius: 5px;}
+    header section > div:nth-child(2) {width: 45%; background-color: rgba(255,255,255,0.3); padding: 9px; border-radius: 5px;}
         header section > div:nth-child(2) input {background-color:transparent; border: none; width: 95%; font-size: 16px; color: #FFF; outline: none;}
         header section > div:nth-child(2) span {color:#FFF; width: 5%; text-align: center; font-size: 20px;}
-    /*Carrinho de compras*/
-    header section > div:nth-child(3) {position:relative; width: 7%; text-align: center; cursor: pointer;}
-        header section > div:nth-child(3) > span {font-size: 40px; color: #FFF;}
-        header section > div:nth-child(3) > span span {position:absolute; margin-left:-10px; background-color: #FFF; color: red; width: 23px; line-height: 23px; border-radius: 50%; font-size: 11px; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; box-shadow: 1px 1px 2px rgba(0,0,0,0.5);}
+    /*Carrinho de compras e cliente logado*/
+    header section > div:nth-child(3) {position:relative; width: 25%; text-align: center;}
+            header section > div:nth-child(3) > span {display:inline-block; font-size: 40px; width: 120px; color: #FFF; cursor: pointer; transition: color 0.3s ease;;}
+            header section > div:nth-child(3) > span:hover {color: rgba(255, 255, 255, 0.7);}
+            header section > div:nth-child(3) > span:first-child {position: relative;}
+                header section > div:nth-child(3) > span:first-child div {position:absolute; white-space: nowrap; font-size: 10px; text-align: center; width: 120px; color: #FFF; font-family: 'PT Sans', sans-serif; text-shadow: 1px 1px 0 black}
+        header section > div:nth-child(3) > span span {position:absolute; margin-left:-10px; background-color: #FFF; color: darkorchid; width: 23px; line-height: 23px; border-radius: 50%; font-size: 11px; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; box-shadow: 1px 1px 2px rgba(0,0,0,0.5);}
+
+    #clienteLogado {display:none; position: absolute; top: 55px; right: 113px; width: 150px; background-color: darkorchid; text-align: center; color: #FFF; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;}
+        #clienteLogado::before {content: ""; position: absolute; left: calc(50% - 6px); width: 0; height: 0; border-top: 6px solid orchid; border-left: 6px solid transparent; border-right: 6px solid transparent;}
+        #clienteLogado ul {list-style: none; padding: 7px;}
+        #clienteLogado ul li { padding: 10px;}
+        #clienteLogado ul li:hover {background-color: #F3F3F3; color: darkorchid; cursor: pointer; border-radius: 3px;}
+
 
 main {position:relative; margin: 100px auto 50px auto; width: 1000px;}
     main ul {list-style: none; display: inline-block;}
@@ -41,9 +54,8 @@ main {position:relative; margin: 100px auto 50px auto; width: 1000px;}
     #ulprodutos li hr {margin: 5px 0; border: none; border-top: 1px solid #F0F0F0;}
     #ulprodutos li .referencia {float:left; width: 50%; line-height: 30px; font-size: 14px; text-align: center; font-style: italic; color: #666; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
     #ulprodutos li .preco {float:right; width: 50%; line-height: 30px; font-size: 14px; text-align: center; color: #333; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
-    #ulprodutos li .botaocomprar { margin: 40px 10px 30px 10px;}
-        #ulprodutos li .botaocomprar input{float:right; padding: 7px; font-size: 16px; color: #FFF; font-style: italic; border-radius: 3px; cursor: pointer; border:none; transition: background-color 0.3s ease; background-color: orchid; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
-        #ulprodutos li .botaocomprar input:hover {background-color: darkorchid;}
+    #ulprodutos li .botaocomprar {margin: 40px 10px 30px 10px;}
+        #ulprodutos li .botaocomprar input{float:right;}
 
 /*Produtos na sacola*/
     #ulminhasacolacompleta {list-style: none; overflow-y:auto; height: 88%; box-sizing:border-box;}
@@ -54,7 +66,7 @@ main {position:relative; margin: 100px auto 50px auto; width: 1000px;}
     #ulminhasacolacompleta li .descricao {display:block;  font-size: 12px;}
     #ulminhasacolacompleta li .referencia {display:block; font-style: italic; color: #666; font-weight: normal; font-size: 12px; margin-bottom: 10px; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
     #ulminhasacolacompleta li .qtd {float:left; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
-        #ulminhasacolacompleta li .qtd input { padding: 5px; width: 15px; text-align: center; border-radius: 2px; border:1px solid #999;}
+        #ulminhasacolacompleta li .qtd input {padding: 5px; width: 15px; text-align: center; border-radius: 2px; border:1px solid #999;}
     #ulminhasacolacompleta li .preco {float:right; line-height: 30px; font-size: 14px; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
         #ulminhasacolacompleta li .preco::after{content: " (und.)"; font-size: 10px;}
 
@@ -71,12 +83,22 @@ main {position:relative; margin: 100px auto 50px auto; width: 1000px;}
 
 footer {display: inline-block; position: relative; background-color: darkorchid;  width: 100%; padding: 20px 0 50px 0; margin-bottom: -5px; color: #FFF;}
     footer > div {width: 1000px; margin: 0 auto;}
-    footer > div > section {float:left; width: 33%;}
+    footer > div > section {position:relative; float:left; width: 33%;}
     footer > div > section div {font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 15px; letter-spacing: -1px; text-transform: uppercase; padding: 10px;}
     footer > div > section div span {margin-right:10px;}
     footer > div > section ul { margin-left:30px; list-style: none;}
     footer > div > section ul li { margin: 0 0 5px 10px; font-size: 14px;}
-    footer > div > section ul li::before {content: "/"; color: rgba(255,255,255,0.8); margin-right: 10px;}
+    footer > div > section ul li::before {content: "/"; color: rgba(255,255,255,0.8); margin-right: 10px; font-weight: bold;}
+    footer > div > section ul li:hover {border-left:2px solid rgba(255,255,255,0.8);}
+    footer > div > section ul li:hover::before {content: "";}
+
+#cadastro {display:none; position: fixed; z-index: 10; top: calc(45% - 200px); left: calc(50% - 350px); width: 700px; height: 400px; box-sizing: border-box; padding: 10px; background-color: #FFF; border-radius: 2px; box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.8);}
+    #cadastro .topo {font-size: 18px; color: darkorchid; font-weight: bold; border-bottom: 1px solid darkorchid; margin-bottom: 20px; padding-bottom: 5px;}
+    #cadastro .topo span {float:right; color: #000;}
+    #cadastro form label {display: block; margin-bottom: 20px; font-size: 14px;}
+    #cadastro form label div {display:inline-block; width: 20%; margin-right: 1%;}
+    #cadastro form label input {width: 79%; box-sizing: border-box; padding: 10px; border-radius: 3px; border: 1px solid #999;box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2);}
+    #cadastro form label input[type='submit'] {width: 100%; border: none; box-shadow: none;}
 
 #produtoadicionado {position: fixed; top: 20px; z-index: 1; right:calc(50% - 80px); background-color: rgba(0,100,0,0.8); color: #FFF; font-size: 14px; font-weight: bold; text-align: center;  width: 160px; line-height: 35px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;}
     #produtoadicionado span {margin-right: 5px;}
@@ -97,7 +119,7 @@ footer {display: inline-block; position: relative; background-color: darkorchid;
         #minhasacolacompleta .cabecalho span:last-child {float: right; margin-right: 10px; cursor: pointer;}
     #minhasacolacompleta .rodape {height: 3.5%; padding:4.5% 20px 0 0; background-color: darkorchid; color: #FFF; text-align: right; font-size: 14px; font-weight: normal; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif}
 
-#minhasacolacompleta-bg {
+.bg-pagina {
     display: none;
     position: fixed;
     top:0;
@@ -112,5 +134,3 @@ footer {display: inline-block; position: relative; background-color: darkorchid;
  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
  font-size: 18px;
 }
-
-

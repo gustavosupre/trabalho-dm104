@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,17 @@
         <section>
             <div><img src="images/logo.png"></div>
             <div><input type="search" /><span class="mif-search"></span></div>
-            <div id="minhasacola_topo" onclick="abreMinhaSacola();"><span class="mif-shopping-basket"><span id="minhasacola_qtd">0</span></span></div>
+            <div id="minhasacola_topo">
+                <span id="spanClienteLogado" class="mif-user" onclick="abreDadosCliente()"></span>
+                <span onclick="abreMinhaSacola();" class="mif-shopping-basket"><span id="minhasacola_qtd">0</span></span>
+                <div id="clienteLogado">
+                    <ul>
+                        <li>Meus Pedidos</li>
+                        <li onclick="abreCadastro()">Meus Dados</li>
+                        <li onclick="apagarDadosCliente()">Apagar Dados</li>
+                    </ul>
+                </div>
+            </div>
         </section>
     </header>
 
@@ -56,13 +66,24 @@
             </ul>
         </section>
         <section>
-            <div><span class="mif-lock"></span>Administrativo</div>
-            <ul>
-                <li><a class="link_branco" href="">Cadastrar Produtos</a></li>
-            </ul>
         </section>
         </div>
     </footer>
+
+    <div id="cadastro">
+        <div class="topo">Cadastre-se<span onclick="abreCadastro();" class="mif-cancel"></span></div>
+        <form id="form-cadastro">
+
+            <label><div>Primeiro Nome:</div><input type="text" id="primeironome" name="primeironome" required /></label>
+            <label><div>Sobrenome:</div><input type="text" id="sobrenome" name="sobrenome" required /></label>
+            <label><div>Data de Nascimento:</div><input type="date" id="nascimento" name="nascimento" required /></label>
+            <label><div>E-mail:</div><input type="email" id="email" name="email" required /></label>
+            <label><div>Senha:</div><input type="password" id="senha" name="senha" required /></label>
+
+            <label for="submit"><input type="submit" name="submit" id="submit" value="Enviar" /></label>
+        </form>
+    </div>
+    <div onclick="abreCadastro();" id="login-bg" class="bg-pagina"></div>
 
     <div id="produtoadicionado"><span class="mif-checkmark"></span>Produto Adicionado!</div>
     <div id="minhasacolacompleta">
@@ -82,7 +103,7 @@
         </ul>
         <div class="rodape" id="minhasacola_total">Sua sacola está vazia.</div>
     </div>
-    <div onclick="abreMinhaSacola();" id="minhasacolacompleta-bg"></div>
+    <div onclick="abreMinhaSacola();" id="minhasacolacompleta-bg" class="bg-pagina"></div>
 
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/main.js"></script>
@@ -90,6 +111,8 @@
     <script src="js/criaElementos.js"></script>
     <script src="js/produtos.js"></script>
     <script src="js/animacoes.js"></script>
+    <script src="js/formCadCliente.js"></script>
+
 </body>
 </html>
 
