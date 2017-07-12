@@ -6,7 +6,7 @@
 body, html {margin: 0; padding: 0; font-family: 'PT Sans', sans-serif; font-weight: normal; font-size: 12px;}
 *{margin: 0; padding: 0;}
 
-input[type='submit'] {padding: 7px; font-size: 16px; color: #FFF; font-style: italic; border-radius: 3px; cursor: pointer; box-shadow: none; border: none; border-style color; transition: background-color 0.3s ease; background-color: orchid; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
+input[type='submit'] {padding: 7px; font-size: 16px; color: #FFF; font-style: italic; border-radius: 3px; cursor: pointer; box-shadow: none; border: none; transition: background-color 0.3s ease; background-color: orchid; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', sans-serif;}
 input[type='submit']:hover{background-color: darkorchid;}
 h1 {font-size: 1.5em; margin-bottom: 20px; font-weight: normal;}
     h1 span::after {content: "/"; margin: 0 10px; color: orchid; font-weight: bold;}
