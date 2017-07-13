@@ -20,13 +20,10 @@
             <div><img src="images/logo.png"></div>
             <div><input type="search" /><span class="mif-search"></span></div>
             <div id="minhasacola_topo">
-                <span id="spanClienteLogado" class="mif-user" onclick="abreDadosCliente()"></span>
+                <span id="spanClienteLogado" class="mif-user"></span>
                 <span onclick="abreMinhaSacola();" class="mif-shopping-basket"><span id="minhasacola_qtd">0</span></span>
                 <div id="clienteLogado">
-                    <ul>
-                        <li>Meus Pedidos</li>
-                        <li onclick="abreCadastro()">Meus Dados</li>
-                        <li onclick="apagarDadosCliente()">Apagar Dados</li>
+                    <ul id="ulmenucliente">
                     </ul>
                 </div>
             </div>
@@ -71,7 +68,8 @@
     </footer>
 
     <div id="cadastro">
-        <div class="topo">Cadastre-se<span onclick="abreCadastro();" class="mif-cancel"></span></div>
+        <div class="topo">Identificação<span onclick="abreCadastro();" class="mif-cancel"></span></div>
+        <div class="mensagem">Preencha seus dados para finalizar seu pedido!</div>
         <form id="form-cadastro">
 
             <label><div>Primeiro Nome:</div><input type="text" id="primeironome" name="primeironome" required /></label>
@@ -101,6 +99,7 @@
             </li>
             -->
         </ul>
+        <input type="submit" onclick="finalizarCompra(localStorage.getItem(LsKey_sacola))" value="Finalizar Pedido">
         <div class="rodape" id="minhasacola_total">Sua sacola está vazia.</div>
     </div>
     <div onclick="abreMinhaSacola();" id="minhasacolacompleta-bg" class="bg-pagina"></div>

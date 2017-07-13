@@ -38,7 +38,7 @@ function carregaDadosCliente () {
 
 
 function gravaUsuarioLocalStorage(primeiroNome, sobrenome, nascimento, email, senha) {
-    var ARR_cadastroCliente = '{"primeiroNome":"'+primeiroNome+'","sobrenome":"'+sobrenome+'","nascimento":"'+nascimento+'","email":"'+email+'","senha":"'+senha+'"}'
+    var ARR_cadastroCliente = '{"idCliente":'+getRandom()+',"primeiroNome":"'+primeiroNome+'","sobrenome":"'+sobrenome+'","nascimento":"'+nascimento+'","email":"'+email+'","senha":"'+senha+'"}'
     localStorage.setItem(LsKey_cadastro, ARR_cadastroCliente)
 }
 
@@ -46,6 +46,6 @@ function onSubmit(event) {
     event.preventDefault() //I want to stop the default event for this form
     gravaUsuarioLocalStorage(getPrimeiroNome(), getSobrenome(), getNascimento(), getEmail(), getSenha())
     abreCadastro() //na verdade é para fechar a tela de cadastro
-    clienteLogado()
+    clienteLogado() //carrega infos de logado no menu topo
 }
 form.addEventListener("submit", onSubmit)

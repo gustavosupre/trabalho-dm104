@@ -44,8 +44,3 @@ function animAddProduto(){
         $('#produtoadicionado').delay(2000).animate({top:"20px"},500)
     });
 }
-
-function abreDadosCliente () {
-
-    $('#clienteLogado').toggle();
-}
