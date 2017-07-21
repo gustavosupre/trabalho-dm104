@@ -1,140 +1,163 @@
-//variaveis
-let LsKey_sacola = 'SacolaCliente'
-let LsKey_cadastro = "CadastroCliente"
-let LsKey_compras = "ComprasCliente"
+//controle do LocalStorage
+let LSKEY_sacola = "GusLS_Sacola"
+let LSKEY_cadastro = "GusLS_Cadastro"
+let LSKEY_compras = "GusLS_Compras"
+let LSKEY_clientes = "GusLS_Clientes"
+let LSKEY_login = "GusLS_Login"
 
+
+function mascaraMoeda(num) {
+    //num.split('.')
+    //var num = num.toLocaleString('pt-BR')
+    var num = num.toLocaleString('pt-BR')
+    var spli = num.split(',')
+    return 'R$ '+spli[0]+','+spli[1]+'0' //gambiarra - arrumar!
+}
 function getRandom() {
     return Math.floor(Math.random() * 999 + 1)
 }
-
-function apagarDadosCliente (){
-    localStorage.removeItem(LsKey_cadastro)
-    clienteLogado()
-    abreDadosCliente()
+function href(link){
+    window.open(link, '_self')
+}
+function cl(t){
+    console.log(t)
+}
+function getLocalStorage (k){
+    return localStorage.getItem(k)
+}
+function setLocalStorage (k, add){
+    localStorage.setItem(k, add)
+}
+function delLocalStorage (k){
+    localStorage.removeItem(k)
+}
+function deleteSacola(){
+    delLocalStorage(LSKEY_sacola)
+    document.getElementById('ulsacola').innerHTML = ""
 }
 
-const form = document.getElementById("form-cadastro")
-const InputPrimeiroNome = document.getElementById("primeironome")
-const InputSobrenome = document.getElementById("sobrenome")
-const InputNascimento = document.getElementById("nascimento")
-const InputEmail = document.getElementById("email")
-const InputSenha = document.getElementById("senha")
 
 
-function getJsonLocalStorageCliente () {
-    var ls = localStorage.getItem(LsKey_cadastro)
-    var cliente_json = JSON.parse('['+ls+']')
-    return cliente_json
-}
-function getClienteNome (tipo) {
-    var cliente_json = getJsonLocalStorageCliente()
-    return cliente_json[0].primeiroNome
-}
-function getClienteSobrenome (tipo) {
-    var cliente_json = getJsonLocalStorageCliente()
-    return cliente_json[0].sobrenome
-}
-function getClienteNascimento (tipo) {
-    var cliente_json = getJsonLocalStorageCliente()
-    return cliente_json[0].nascimento
-}
-function getClienteEmail (tipo) {
-    var cliente_json = getJsonLocalStorageCliente()
-    return cliente_json[0].email
-}
-function getClienteSenha (tipo) {
-    var cliente_json = getJsonLocalStorageCliente()
-    return cliente_json[0].senha
-}
-//localStorage.removeItem(LsKey_cadastro)
+function addProdSacola (id){
+    var sacola_atual = getLocalStorage(LSKEY_sacola)
+    var pegaAttr = document.getElementById('attr-prod-'+ id).value
 
+    //localstorage vazio
+    if (sacola_atual == null) {
+        setLocalStorage(LSKEY_sacola, pegaAttr)
 
-function clienteLogado () {
-    var spanCliente = document.getElementById("spanClienteLogado")
-    var LS_cliente = localStorage.getItem(LsKey_cadastro)
-
-    if (LS_cliente) {
-        spanCliente.className = "mif-user"
-        spanCliente.innerHTML = "<div>"+getClienteNome().toUpperCase()+"</div>"
-
+    //local storage NAO vazio
     } else {
-        spanCliente.className = "mif-user"
-        spanCliente.innerHTML = ""
+        var json_sacola = JSON.parse('['+sacola_atual+']')
 
+        var conta = 0
+        var verif = 0;
+        json_sacola.forEach(function(elem, conta) {
+            //verifica se item ja tem no localstorage sacola - se tiver retorna a posição do array que esta repetindo
+            if (id == elem["id"]) {
+                verif = (conta+1)
+            }
+            conta++
+        });
+
+        if (verif == 0) {
+            setLocalStorage(LSKEY_sacola, sacola_atual+','+pegaAttr)
+        } else {
+            var add_sacola = ',';
+            //cl(json_sacola[0])
+            for (var i=0; i<json_sacola.length; i++){
+                sacola = JSON.stringify(json_sacola[i])
+                if (i == verif-1) {
+                    soma = '{"id":'+json_sacola[i].id+',"tipo":"'+json_sacola[i].tipo+'","preco":'+json_sacola[i].preco+',"descricao":"'+json_sacola[i].descricao+'","foto":"'+json_sacola[i].foto+'","qtd":'+(json_sacola[i].qtd+1)+'}'
+                    add_sacola = add_sacola+soma+','
+                } else {
+                    add_sacola = add_sacola+sacola+','
+                }
+            }
+            var add = add_sacola.substring(1, (add_sacola.length-1))
+            setLocalStorage(LSKEY_sacola, add)
+        }
     }
-
-}
-clienteLogado()
-
-function finalizarCompra(sacola){
-    abreCadastro(sacola)
-    abreMinhaSacola() //na verdade vai fechar
-}
-
-function getClienteIDLS () {
-
-    var cliente = localStorage.getItem(LsKey_cadastro)
-    var json_cliente = JSON.parse('['+cliente+']')
-   return json_cliente[0].idCliente
-}
-
-function unirPedidoAoCliente (ls_pedido, ls_cliente) {
-
-    var cliente = '{"cliente":'+ls_cliente+'}'
-    var pedido = '{"pedidos":[{"'+getRandom()+'":['+ls_pedido+']}]}'
-    var unir = cliente+','+pedido
-    localStorage.setItem(LsKey_compras+getClienteIDLS(), unir)
-}
-function unirMaisPedidosAoCliente (idCliente, ls_pedido) {
-
-    ls = localStorage.getItem(LsKey_compras+idCliente)
-    json_ls = JSON.parse('['+ls+']')
-    json_pedido = JSON.parse('['+ls_pedido+']')
-    var qtdpedidos = json_ls[1].pedidos.length
-    json_ls[1].pedidos[qtdpedidos] = '{"'+getRandom()+'":'+JSON.stringify(json_pedido)+'}'
-
-    var pedidos_atuais = ""
-    for (var i = 0; i < qtdpedidos; i++) {
-        pedidos_atuais = pedidos_atuais+JSON.stringify(json_ls[1].pedidos[i])+","
-    }
-
-    var cliente_add = JSON.stringify(json_ls[0].cliente)
-    var novopedido = '{"'+getRandom()+'":['+ls_pedido+']}'
-    //var pedidos_atuais = pedidos_atuais.substr(0,(pedidos_atuais.length - 1))
-    var unir = '{"cliente":'+cliente_add+'},'+'{"pedidos":['+pedidos_atuais+novopedido+']}'
-
-    localStorage.setItem(LsKey_compras+idCliente, unir)
-    //console.log(pedidos_atuais)
-    //console.log(JSON.parse('['+unir+']'))
+    criaElementoProdutoSacola()
+    animAddProduto(id)
 
 }
 
-function _unirPedidoAoCliente (pedido, cliente){
-    var cliente = '{"cliente":'+cliente+'}'
-    var pedido1 = ''+pedido+''
-    var pedido2 = '{"id":"50","preco":"106.8","descricao":"SOUTIEN TAMANHOS ESPECIAIS EM TACTEL E RENDA","foto":"img_20151019_143124346tratadaex50_e.jpg","qtd":2},{"id":"47","preco":"136.2","descricao":"CONJUNTO STRAPPY BRA - ALÇA TODA TRABALHADA EM RENDA","foto":"_mg_9304_f2_1_e.jpg","qtd":2},{"id":"46","preco":"124.9","descricao":"CAMISOLA EM LIGANETE,COM DETALHES EM TULE E RENDA - ACOMPANHA UMA CALCINHA FIO ","foto":"_mg_5719_f2_alterada_e.jpg","qtd":2},{"id":"45","preco":"114","descricao":"CONJUNTO MOLDADO MENINA MOÇA PP","foto":"img_20160601_140303622_e.jpg","qtd":2},{"id":"44","preco":"140.1","descricao":"CONJUNTO DE BIQUÍNI COM BASE TAMANHOS ESPECIAIS","foto":"_mg_6030_f_alterada_e0.jpg","qtd":2},{"id":"48","preco":"123.9","descricao":"CONJUNTO EM RENDA E TULE - ALÇA COM DETALHE EM PÉROLAS, ACOMPANHA PERSEX","foto":"_mg_5707_f2_alterada_e.jpg","qtd":2},{"id":"49","preco":"131.8","descricao":"CAMISOLA SEM BOJO EM LIGANETE, COM DETALHE EM RENDA FINA - ACOMPANHA UMA CALCINHA FIO ","foto":"_mg_5774_f2_e.jpg","qtd":4},{"id":"40","preco":"107.7","descricao":"CONJUNTO MICROFIBRA E RENDA ARCO INTEIRO - ACOMPANHA 02 CALCINHAS","foto":"_dsc0675_e.jpg","qtd":1},{"id":"42","preco":"130.6","descricao":"SOUTIEN AVULSO CORTE A LASER S LINE","foto":"_mg_5929_f4_e.jpg","qtd":1},{"id":"43","preco":"109.5","descricao":"CONJUNTO DE BIQUÍNI COM BASE E ALÇAS","foto":"_mg_6045_f_alterada_e.jpg","qtd":1}'
-    var unir_pedidos = '{"pedidos":[{"001":['+pedido1+']},{"002":['+pedido2+']}]}'
-    var tudo = "["+cliente+","+unir_pedidos+"]"
-
-    var json = JSON.parse(tudo)
-
-    //var unir2 =
-    var cliente = json[0].cliente.primeiroNome
-    console.log("cliente: "+cliente)
-
-    var pedido = Object.getOwnPropertyNames(json[1].pedidos[0])
-    console.log("pedido: "+pedido)
-    var produto = json[1].pedidos[0][pedido]
-    console.log("produto: "+produto[0].id)
-
-
-    console.log("---")
-    console.log(tudo)
+function setlogin (idCliente){
+    setLocalStorage(LSKEY_login, idCliente)
+    var elemLogado = document.getElementById('logado')
+    elemLogado.setAttribute('class','mif-user logado')
+    elemLogado.removeAttribute('onclick', 'dellogin()')
+    document.getElementById('logado').innerHTML = "<span>"+getLogado('nome')+"</span>"
 }
-//unirPedidoAoCliente (localStorage.getItem(LsKey_sacola), localStorage.getItem(LsKey_cadastro))
-novopedido1 = '{"id":"01","preco":"99.01","descricao":"desc 1","foto":"1.jpg","qtd":1},{"id":"02","preco":"99.02","descricao":"desc 2","foto":"2.jpg","qtd":3}'
-novopedido2 = '{"id":"55","preco":"10","descricao":"desc 1","foto":"1.jpg","qtd":1},{"id":"56","preco":"99.02","descricao":"desc 2","foto":"2.jpg","qtd":3}'
-novopedido3 = '{"id":"48","preco":"123.9","descricao":"CONJUNTO EM RENDA E TULE - ALÇA COM DETALHE EM PÉROLAS, ACOMPANHA PERSEX","foto":"_mg_5707_f2_alterada_e.jpg","qtd":2},{"id":"49","preco":"131.8","descricao":"CAMISOLA SEM BOJO EM LIGANETE, COM DETALHE EM RENDA FINA - ACOMPANHA UMA CALCINHA FIO ","foto":"_mg_5774_f2_e.jpg","qtd":4},{"id":"40","preco":"107.7","descricao":"CONJUNTO MICROFIBRA E RENDA ARCO INTEIRO - ACOMPANHA 02 CALCINHAS","foto":"_dsc0675_e.jpg","qtd":1},{"id":"42","preco":"130.6","descricao":"SOUTIEN AVULSO CORTE A LASER S LINE","foto":"_mg_5929_f4_e.jpg","qtd":1},{"id":"43","preco":"109.5","descricao":"CONJUNTO DE BIQUÍNI COM BASE E ALÇAS","foto":"_mg_6045_f_alterada_e.jpg","qtd":1}'
-unirMaisPedidosAoCliente(632, novopedido3)
-//localStorage.removeItem('ComprasCliente632')
 
+function dellogin (){
+    delLocalStorage(LSKEY_login)
+    var elemLogado = document.getElementById('logado')
+    elemLogado.removeAttribute('class')
+    elemLogado.setAttribute('class','mif-user')
+    elemLogado.removeAttribute('onclick')
+    document.getElementById('logado').innerHTML = ""
+
+}
+
+function getLogado (dado) {
+    var cliente_logado = getLocalStorage(LSKEY_login)
+    var ls_clientes = getLocalStorage(LSKEY_clientes)
+    var json_clientes = JSON.parse('['+ls_clientes+']')
+    var ret
+
+    json_clientes.forEach(function(elem) {
+        if (cliente_logado == elem["id"]){
+            ret = elem[dado]
+        }
+    });
+    return ret
+}
+
+function getClienteLs (idCliente, dado) {
+    var ls_clientes = getLocalStorage(LSKEY_clientes)
+    var json_clientes = JSON.parse('['+ls_clientes+']')
+    var ret
+
+    json_clientes.forEach(function(elem) {
+        if (idCliente == elem["id"]){
+            ret = elem[dado]
+        }
+    });
+    return ret
+}
+
+/*
+function getCliente (idCliente) {
+    var cliente_logado = getLocalStorage(LSKEY_login)
+    var ls_clientes = getLocalStorage(LSKEY_clientes)
+    var json_clientes = JSON.parse('['+ls_clientes+']')
+    var div_logado = document.getElementById('logado')
+
+    json_clientes.forEach(function(elem) {
+        if (cliente_logado == elem["id"]){
+            div_logado.innerHTML = "<span>"+elem["nome"]+"</span>"
+        }
+    });
+
+}
+function getLID () {
+    var cliente_logado = getLocalStorage(LSKEY_login)
+    var ls_clientes = getLocalStorage(LSKEY_clientes)
+    var json_clientes = JSON.parse('['+ls_clientes+']')
+    var div_logado = document.getElementById('logado')
+
+    json_clientes.forEach(function(elem) {
+        if (cliente_logado == elem["id"]){
+            div_logado.innerHTML = "<span>"+elem["nome"]+"</span>"
+        }
+    });
+
+}
+/*
+
+/*
+
+
+*/

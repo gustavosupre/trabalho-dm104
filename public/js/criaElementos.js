@@ -1,49 +1,77 @@
-function criaElementoLi (nome, id) {
-  var cria = document.createElement('li');
-  cria.setAttribute("id", nome + id);
-  return cria;
+function criaDiv (){
+    var cria = document.createElement('div')
+    return cria
 }
-function criaElementoImg (src) {
-    var cria = document.createElement('img');
-    cria.setAttribute("src", "./images/products/media_" + src);
-    return cria;
+
+function criaSpan (){
+    var cria = document.createElement('span')
+    return cria
 }
-function criaElementoDiv (conteudo, classe) {
-  var cria = document.createElement('div');
-  if (conteudo != "") {
-      cria.innerHTML = conteudo
-  }
-  if (classe != "") {
-      cria.setAttribute("class", classe);
-  }
-  return cria;
+
+function criaUl (){
+    var cria = document.createElement('ul')
+    return cria
 }
-function criaElementoHr (hr) {
+
+function criaLi (){
+    var cria = document.createElement('li')
+    return cria
+}
+
+function criaImg (src){
+    var cria = document.createElement('img')
+    cria.setAttribute("src", src)
+    return cria
+}
+
+function criaHr () {
     var cria = document.createElement('hr');
     return cria;
 }
-function criaElementoBotaoComprar (id) {
-  var cria = document.createElement('input');
-  cria.setAttribute("type", "submit");
-  cria.setAttribute("id", "btncomprar-produtos-" + id);
-  cria.setAttribute("onClick", "addProdutoStorage(" + id + ")");
-  cria.setAttribute("value", "Comprar");
-  return cria;
-}
-function criaElementoInutHiddenIndex (id, preco, descricao, foto, qtd) {
 
-  var cria = document.createElement('input');
-  cria.setAttribute("type", "hidden");
-  cria.setAttribute("id", "input-produtos-" + id);
-  cria.setAttribute("value", "" + '{"id":"'+ id +'","preco":'+ preco +',"descricao":"'+ descricao +'","foto":"'+ foto +'","qtd":1}');
-  //cria.setAttribute("value", "" + '{id:"'+ id +'",preco:"'+ preco +'",descricao:"'+ descricao +'",foto:"'+ foto +'"}');
-  return cria;
+function criaInput(type){
+    var cria = document.createElement('input');
+    cria.setAttribute("type", type);
+    return cria;
 }
-function criaElementoInutQtd (id, qtd) {
 
-  var cria = document.createElement('input');
-  cria.setAttribute("id", "sacola-qtd-" + id);
-  cria.setAttribute("readonly","readonly");
-  cria.setAttribute("value", qtd);
-  return cria;
+function criaForm(id){
+    var cria = document.createElement('form');
+    cria.setAttribute("id", id);
+    return cria;
+}
+
+function criaLabel(){
+    var cria = document.createElement('label');
+    return cria;
+}
+
+function criaTable(){
+    var cria = document.createElement('table');
+    return cria;
+}
+
+function criaThead(){
+    var cria = document.createElement('thead');
+    return cria;
+}
+
+function criaTbody(){
+    var cria = document.createElement('tbody');
+    return cria;
+}
+
+function criaTfoot(){
+    var cria = document.createElement('tfoot');
+    return cria;
+}
+
+function criaTr(){
+    var cria = document.createElement('tr');
+    return cria;
+}
+
+function criaTd(){
+    var cria = document.createElement('td');
+    return cria;
 }

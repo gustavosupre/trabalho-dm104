@@ -1,46 +1,68 @@
-function abreMinhaSacola() {
-    if ($("#minhasacolacompleta-bg").css("display") == "none") {
-        $("html body").css("overflow","hidden");
-        $("#minhasacolacompleta-bg").fadeTo("fast", 0.7, function(){
-                $(this).show();
-                //$("#menuesquerdo-fechar").show();
-        });
-        $('#minhasacolacompleta').animate({right:0},500);
-    } else {
-        $("html body").css("overflow","auto");
-        $("#minhasacolacompleta-bg").fadeTo("fast", 0, function(){
-                $(this).hide();
-                //$("#menuesquerdo-fechar").hide();
-        });
-        $('#minhasacolacompleta').animate({right:"-360px"},500);
-    }
-}
-
-function abreCadastro (){
+function AbreLogin() {
     if ($("#login-bg").css("display") == "none") {
         $("html body").css("overflow","hidden");
         $("#login-bg").fadeTo("fast", 0.7, function(){
                 $(this).show();
-                //$("#menuesquerdo-fechar").show();
         });
-        $("#cadastro").fadeTo("fast", 1, function(){
+        $("#login").fadeTo("fast", 1, function(){
                 $(this).show();
         });
     } else {
         $("html body").css("overflow","auto");
         $("#login-bg").fadeTo("fast", 0, function(){
                 $(this).hide();
-                //$("#menuesquerdo-fechar").hide();
         });
-        $("#cadastro").fadeTo("fast", 1, function(){
+        $("#login").fadeTo("fast", 1, function(){
                 $(this).hide();
         });
     }
-    carregaDadosCliente()
+    //carregaDadosCliente()
 }
 
-function animAddProduto(){
-    $('#produtoadicionado').animate({top:"65px"},500, function(){
-        $('#produtoadicionado').delay(2000).animate({top:"20px"},500)
+function AbreSacola() {
+    if ($("#sacola-bg").css("display") == "none") {
+        $("html body").css("overflow","hidden");
+        $("#sacola-bg").fadeTo("fast", 0.7, function(){
+                $(this).show();
+                //$("#menuesquerdo-fechar").show();
+        });
+        $('#sacola').animate({right:0},500);
+    } else {
+        $("html body").css("overflow","auto");
+        $("#sacola-bg").fadeTo("fast", 0, function(){
+                $(this).hide();
+                //$("#menuesquerdo-fechar").hide();
+        });
+        $('#sacola').animate({right:"-360px"},500);
+    }
+}
+
+function AbreCliente (acesso){
+    if ($("#cliente-bg").css("display") == "none") {
+        $("html body").css("overflow","hidden");
+        $("#cliente-bg").fadeTo("fast", 0.7, function(){
+                $(this).show();
+        });
+        $("#cliente").fadeTo("fast", 1, function(){
+                $(this).show();
+                AbreSacola()
+                cliente(acesso)
+        });
+    } else {
+        $("html body").css("overflow","auto");
+        $("#cliente-bg").fadeTo("fast", 0, function(){
+                $(this).hide();
+        });
+        $("#cliente").fadeTo("fast", 1, function(){
+                $(this).hide();
+                cliente(acesso)
+        });
+    }
+}
+
+function animAddProduto(id){
+    $('#produto-adicionado').html('Produto <strong>Ref. '+id+'</strong> adicionado!')
+    $('#produto-adicionado').animate({top:"70px"},500, function(){
+        $('#produto-adicionado').delay(2000).animate({top:"20px"},500)
     });
 }

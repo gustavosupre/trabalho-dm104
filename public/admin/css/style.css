@@ -1,0 +1,29 @@
+html, *{margin: 0; padding: 0;}
+body{margin: 0; font-size: 14px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;}
+
+h1 {padding-bottom:5px; margin-bottom: 20px; border-bottom: 3px solid #666; color: #000;}
+
+header {position: absolute; top: 0; left: 0; width: 100%; padding: 7px 0; background-color: #CCC;}
+    header section div:nth-child(1) {display: inline-block; margin-left: 20px;}
+        header section div:nth-child(1) img {width: 60%;}
+    header section div:nth-child(2) {float:right; width:20px; height:20px; margin-right: 20px; border-radius: 50%; background-color: black}
+
+nav {position:absolute; top:38px; left: 0; width: 15%; height: calc(100% - 38px); box-sizing: border-box; padding: 10px; background-color: rgba(0,0,0,0.7); color: darkorchid;}
+nav a:link, nav a:active, nav a:visited,nav a:visited {color: white; text-decoration: none;}
+
+    nav ul {list-style: none;}
+    nav ul li {padding: 10px;}
+        nav ul li:hover {background-color: rgba(0,0,0,0.5); color: #FFF;}
+
+main {position: absolute; top: 38px; left: 15%; width: calc(85% - 40px); height: calc(100% - 78px); margin: 20px;}
+    main iframe {height: 100%;}
+
+.tabela_registros {padding: 20px;}
+    .tabela_registros thead {background-color: #666; color: #FFF; text-transform: uppercase;}
+        .tabela_registros thead td { padding: 10px;}
+
+    .tabela_registros tbody tr:hover {background-color: #F3F3F3;}
+    .tabela_registros tbody tr td {padding: 10px;}
+    .tabela_registros tbody tr td .pedido {padding: 2px; background-color: rgba(218,112,214,0.2); margin-left: 5px; border-radius: 3px;}
+
+

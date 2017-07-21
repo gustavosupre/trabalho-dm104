@@ -14,23 +14,17 @@
 
 </head>
 <body>
-
+    <!-- cabeçalho -->
     <header>
         <section>
-            <div><img src="images/logo.png"></div>
-            <div><input type="search" /><span class="mif-search"></span></div>
-            <div id="minhasacola_topo">
-                <span id="spanClienteLogado" class="mif-user"></span>
-                <span onclick="abreMinhaSacola();" class="mif-shopping-basket"><span id="minhasacola_qtd">0</span></span>
-                <div id="clienteLogado">
-                    <ul id="ulmenucliente">
-                    </ul>
-                </div>
-            </div>
+            <a href="index.html"><img src="images/logo.png"></a>
+            <span onclick="AbreSacola();" class="mif-shopping-basket"><span id="sacola_qtd">0</span></span>
+            <span class="mif-user logado" id="logado"></span>
         </section>
     </header>
 
-    <main>
+    <!-- produtos -->
+    <main id="main">
         <h1><span>Ga Moda Intima</span></h1>
         <ul id="ulprodutos">
             <!--
@@ -43,6 +37,7 @@
             -->
     </main>
 
+    <!-- rodapé -->
     <footer>
         <div>
         <section>
@@ -63,55 +58,45 @@
             </ul>
         </section>
         <section>
+            <div><span class="mif-user"></span>Administrativo</div>
+            <ul>
+                <li><a class="link_branco" href="admin/index.html" target="_blank">Acessar</a></li>
+            </ul>
         </section>
         </div>
     </footer>
 
-    <div id="cadastro">
-        <div class="topo">Identificação<span onclick="abreCadastro();" class="mif-cancel"></span></div>
-        <div class="mensagem">Preencha seus dados para finalizar seu pedido!</div>
-        <form id="form-cadastro">
+    <!-- Divs Flutuantes -->
+    <div id="produto-adicionado"></div>
+    <div id="sacola">
+        <div class="cabecalho">
+            <span onclick="AbreSacola();" class="mif-shopping-basket"></span>
+            <span>Minha Sacola</span>
+            <span onclick="deleteSacola(LSKEY_sacola)" class="mif-bin"></span>
+        </div>
+        <ul id="ulsacola"></ul>
+        <div class="total"><div id="sacola_valortotal">Sua sacola está vazia.</div></div>
+        <input onclick="href('checkout.html')" type="submit" value="Finalizar Compra" />
+    </div>
+    <div onclick="AbreSacola();" id="sacola-bg" class="bg-paginaflutuante"></div>
 
-            <label><div>Primeiro Nome:</div><input type="text" id="primeironome" name="primeironome" required /></label>
-            <label><div>Sobrenome:</div><input type="text" id="sobrenome" name="sobrenome" required /></label>
-            <label><div>Data de Nascimento:</div><input type="date" id="nascimento" name="nascimento" required /></label>
-            <label><div>E-mail:</div><input type="email" id="email" name="email" required /></label>
-            <label><div>Senha:</div><input type="password" id="senha" name="senha" required /></label>
-
-            <label for="submit"><input type="submit" name="submit" id="submit" value="Enviar" /></label>
+    <div id="login">
+        <div class="cabecalho">Digite seus dados para acessar</div>
+        <form id="form-login">
+            <label><div>E-mail:</div><input type="email" id="cli_email" required /></label>
+            <label><div>Senha:</div><input type="password" id="cli_senha" required /></label>
+            <label for="submit"><input type="submit" name="submit" id="submit" value="Acessar" /></label>
         </form>
     </div>
-    <div onclick="abreCadastro();" id="login-bg" class="bg-pagina"></div>
+    <div onclick="AbreLogin();" id="login-bg" class="bg-paginaflutuante"></div>
 
-    <div id="produtoadicionado"><span class="mif-checkmark"></span>Produto Adicionado!</div>
-    <div id="minhasacolacompleta">
-        <div class="cabecalho"><span onclick="abreMinhaSacola(LsKey_sacola)" title="Esconder sacola" class="mif-shopping-basket"></span>Minha Sacola<span onclick="delLocalStorage(LsKey_sacola)" title="Excluir produtos da sacola" class="mif-bin"></span></div>
-        <ul id="ulminhasacolacompleta">
-            <!--
-            <li>
-                <div><img src="images/products/media__dsc0497_e.jpg"></div>
-                <div>CAMISOLA EM LIGANETE COM DETLAHE EM TULE E RENDA -ACOMPANHA 01 CALCINHA FIO</div>
-                <div>Ref. 001</div>
-                <div>
-                    <div>5</div>
-                    <div>R$ 150,00</div>
-                </div>
-            </li>
-            -->
-        </ul>
-        <input type="submit" onclick="finalizarCompra(localStorage.getItem(LsKey_sacola))" value="Finalizar Pedido">
-        <div class="rodape" id="minhasacola_total">Sua sacola está vazia.</div>
-    </div>
-    <div onclick="abreMinhaSacola();" id="minhasacolacompleta-bg" class="bg-pagina"></div>
-
+    <!-- JS -->
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/localStorage.js"></script>
+    <script src="js/animacoes.js"></script>
     <script src="js/criaElementos.js"></script>
     <script src="js/produtos.js"></script>
-    <script src="js/animacoes.js"></script>
-    <script src="js/formCadCliente.js"></script>
-
+    <script src="js/jsonProdutos.js"></script>
+    <script src="js/auto.js"></script>
 </body>
 </html>
-
