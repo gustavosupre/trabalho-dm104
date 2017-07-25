@@ -4,6 +4,11 @@ let LSKEY_cadastro = "GusLS_Cadastro"
 let LSKEY_compras = "GusLS_Compras"
 let LSKEY_clientes = "GusLS_Clientes"
 let LSKEY_login = "GusLS_Login"
+let LSKEY_compraSucesso = "GusLS_CompraSucesso"
+
+//delLocalStorage(LSKEY_clientes)
+//delLocalStorage(LSKEY_compras)
+//delLocalStorage(LSKEY_login)
 
 
 function mascaraMoeda(num) {
@@ -24,6 +29,9 @@ function cl(t){
 }
 function getLocalStorage (k){
     return localStorage.getItem(k)
+}
+function addLocalStorage (k, atual, add){
+    localStorage.setItem(k, atual+','+add)
 }
 function setLocalStorage (k, add){
     localStorage.setItem(k, add)
@@ -82,22 +90,35 @@ function addProdSacola (id){
     animAddProduto(id)
 
 }
+function setLogado(){
+    var ls_login = getLocalStorage(LSKEY_login)
+    document.getElementById('logado').setAttribute('class', 'mif-user logado')
+    document.getElementById('logado').setAttribute('onclick', 'dellogin()')
+    document.getElementById('logado').innerHTML = "<span>"+getLogado('nome')+"</span>"
+}
+function setLogoff(){
+    var elemLogado = document.getElementById('logado')
 
+    elemLogado.removeAttribute('class')
+    elemLogado.setAttribute('class','mif-user')
+    elemLogado.removeAttribute('onclick')
+    elemLogado.setAttribute('onclick', 'AbreLogin()')
+    elemLogado.innerHTML = ""
+}
 function setlogin (idCliente){
     setLocalStorage(LSKEY_login, idCliente)
+    setLogado()
+    /*
     var elemLogado = document.getElementById('logado')
     elemLogado.setAttribute('class','mif-user logado')
     elemLogado.removeAttribute('onclick', 'dellogin()')
     document.getElementById('logado').innerHTML = "<span>"+getLogado('nome')+"</span>"
+    */
 }
 
 function dellogin (){
     delLocalStorage(LSKEY_login)
-    var elemLogado = document.getElementById('logado')
-    elemLogado.removeAttribute('class')
-    elemLogado.setAttribute('class','mif-user')
-    elemLogado.removeAttribute('onclick')
-    document.getElementById('logado').innerHTML = ""
+    setLogoff()
 
 }
 
@@ -128,36 +149,3 @@ function getClienteLs (idCliente, dado) {
     return ret
 }
 
-/*
-function getCliente (idCliente) {
-    var cliente_logado = getLocalStorage(LSKEY_login)
-    var ls_clientes = getLocalStorage(LSKEY_clientes)
-    var json_clientes = JSON.parse('['+ls_clientes+']')
-    var div_logado = document.getElementById('logado')
-
-    json_clientes.forEach(function(elem) {
-        if (cliente_logado == elem["id"]){
-            div_logado.innerHTML = "<span>"+elem["nome"]+"</span>"
-        }
-    });
-
-}
-function getLID () {
-    var cliente_logado = getLocalStorage(LSKEY_login)
-    var ls_clientes = getLocalStorage(LSKEY_clientes)
-    var json_clientes = JSON.parse('['+ls_clientes+']')
-    var div_logado = document.getElementById('logado')
-
-    json_clientes.forEach(function(elem) {
-        if (cliente_logado == elem["id"]){
-            div_logado.innerHTML = "<span>"+elem["nome"]+"</span>"
-        }
-    });
-
-}
-/*
-
-/*
-
-
-*/

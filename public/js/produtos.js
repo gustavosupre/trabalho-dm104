@@ -56,19 +56,6 @@ function criaElementoProduto (getul, id, tipo, preco, descricao, foto, qtd = 1){
 }
 
 
-//verifica se esta logado
-if (getLocalStorage(LSKEY_login) != null) {
-    var ls_login = getLocalStorage(LSKEY_login)
-
-    document.getElementById('logado').setAttribute('class', 'mif-user logado')
-    document.getElementById('logado').setAttribute('onclick', 'dellogin()')
-    document.getElementById('logado').innerHTML = "<span>"+getLogado('nome')+"</span>"
-
-} else {
-    document.getElementById('logado').setAttribute('onclick', 'AbreLogin()')
-}
-
-
 function criaElementoProdutoSacola () {
 
     //zerando ul da sacola

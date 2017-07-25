@@ -1,0 +1,1 @@
+document.getElementById('numPedido').innerHTML = getLocalStorage(LSKEY_compraSucesso)

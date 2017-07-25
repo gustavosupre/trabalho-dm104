@@ -82,9 +82,11 @@
 
     <div id="login">
         <div class="cabecalho">Digite seus dados para acessar</div>
+        <div id="retorno-login" class="retorno">E-mail ou senha incorretos!</div>
         <form id="form-login">
-            <label><div>E-mail:</div><input type="email" id="cli_email" required /></label>
-            <label><div>Senha:</div><input type="password" id="cli_senha" required /></label>
+            <label><div>E-mail:</div><input type="email" id="login_email" required /></label>
+            <label><div>Senha:</div><input type="password" id="login_senha" required /></label>
+            <input type="hidden" id="login_tipo" value="index" />
             <label for="submit"><input type="submit" name="submit" id="submit" value="Acessar" /></label>
         </form>
     </div>
@@ -93,10 +95,12 @@
     <!-- JS -->
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/mainIndex.js"></script>
     <script src="js/animacoes.js"></script>
     <script src="js/criaElementos.js"></script>
     <script src="js/produtos.js"></script>
     <script src="js/jsonProdutos.js"></script>
+    <script src="js/login.js"></script>
     <script src="js/auto.js"></script>
 </body>
 </html>

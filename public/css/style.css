@@ -96,6 +96,7 @@ footer {display: inline-block; position: relative; background-color: darkorchid;
     #form-login label input {width: 100%; box-sizing: border-box; padding: 10px; border-radius: 3px; border: 1px solid #999;box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2);}
     #form-login label input[type='submit'] {border: none; box-shadow: none;}
 
+.retorno {display: none; margin: 5px 5px 15px 5px; padding: 10px; border: 1px solid rgba(255,0,0,0.6); background-color: rgba(255,0,0,0.1);}
 
 
 
