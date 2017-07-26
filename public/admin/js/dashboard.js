@@ -7,26 +7,39 @@ function resumoClientes (){
     return json_clientes.length
 }
 
+function calcValorTotalPorProduto(qtd, preco) {
+    return qtd * preco
+}
+
 function resumoCompras (){
     var ls_compras = getLocalStorage(LSKEY_compras)
     var json_compras = JSON.parse('['+ls_compras+']')
-    var ret
+    var valorTotal
     cl(json_compras)
-    var total_qtdCompras = 0
-    json_compras.forEach(function(elem, i) {
-        var compras_idcliente = Object.keys(json_compras[i])[0]
-        total_qtdCompras = elem[compras_idcliente].length + total_qtdCompras
+    //cl('total: '+json_compras[0]['308'][0]['5'][0].id)
+    //cl(json_compras[0]['308'][1]['20'].length)
 
-        var qtdVendaPorCliente = elem[compras_idcliente].length
-        var compras_cliente = Object.keys(json_compras[i])[0]
-        for (var ii = 0; ii < qtdVendaPorCliente; ii++){
-            cl(Object.keys(elem[compras_idcliente][ii])[0].length)
-            //cl(Object.keys(elem[compras_idcliente][ii])[0].length)
-            //cl('---')
+
+    json_compras.forEach(function(elem, i) {
+        var cliente = Object.keys(json_compras[i])[0]
+        //cl(cliente)
+        for (var ii = 0; ii < elem[cliente].length; ii++){
+            var pedido = Object.keys(elem[cliente][ii])[0]
+            var total_qtdProduto = json_compras[i][cliente][ii][pedido].length
+            //cl('    '+pedido)
+            for(var iii = 0; iii < total_qtdProduto; iii++){
+                var qtd = json_compras[i][cliente][ii][pedido][iii].qtd
+                var preco = json_compras[i][cliente][ii][pedido][iii].preco
+                var valorTotalProduto = (calcValorTotalPorProduto(qtd, preco))
+                //valorTotal = valorTotalProduto + valorTotal
+                cl(qtd+' x '+preco+' = '+calcValorTotalPorProduto(qtd, preco))
+                valorTotal = parseFloat(valorTotalProduto + valorTotal)
+            }
+            cl(valorTotal)
         }
     });
 
-    ret = total_qtdCompras
-    return ret
+    //ret = total_qtdCompras
+
 }
 
