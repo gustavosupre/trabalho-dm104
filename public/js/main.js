@@ -5,10 +5,12 @@ let LSKEY_compras = "GusLS_Compras"
 let LSKEY_clientes = "GusLS_Clientes"
 let LSKEY_login = "GusLS_Login"
 let LSKEY_compraSucesso = "GusLS_CompraSucesso"
+let LSKEY_googleChart = "GusLS_GoogleChart"
 
 //delLocalStorage(LSKEY_clientes)
 //delLocalStorage(LSKEY_compras)
 //delLocalStorage(LSKEY_login)
+//delLocalStorage(LSKEY_compraSucesso)
 
 
 function mascaraMoeda(num) {
@@ -16,7 +18,13 @@ function mascaraMoeda(num) {
     //var num = num.toLocaleString('pt-BR')
     var num = num.toLocaleString('pt-BR')
     var spli = num.split(',')
-    return 'R$ '+spli[0]+','+spli[1]+'0' //gambiarra - arrumar!
+
+    if (spli.length == 1) {
+        var centavos = "00"
+    } else {
+        var centavos = +spli[1]+"0"
+    }
+    return 'R$ '+spli[0]+','+centavos //gambiarra - arrumar!
 }
 function getRandom() {
     return Math.floor(Math.random() * 999 + 1)
@@ -26,6 +34,9 @@ function href(link){
 }
 function cl(t){
     console.log(t)
+}
+function isNumber(n) {
+    return n+ " - "+!isNaN(parseFloat(n)) && isFinite(n);
 }
 function getLocalStorage (k){
     return localStorage.getItem(k)

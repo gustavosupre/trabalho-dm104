@@ -1,0 +1,17 @@
+.resumos > div {display:inline-block; width: 250px; border-radius: 3px; margin-right: 20px;}
+.resumos .titulo {background-color: #FFF; padding: 10px; border-top-left-radius: 3px; border-top-right-radius: 3px; text-transform: uppercase; font-weight: bold;}
+.resumos .conteudo {float: left; width: 100%; color: #FFF;}
+    .resumos .conteudo span {font-weight: bold;}
+    .resumos .conteudo span:first-child {float: left; font-size: 80px; padding: 10px; color: rgba(255,255,255,0.6);}
+    .resumos .conteudo span:last-child {float: right; padding: 10px; text-align: right;}
+
+    .resumos .clientes {background-color: green;}
+        .clientes .titulo {border: 1px solid green; color: green;}
+        .clientes span:last-child {line-height: 80px;}
+
+    .resumos .compras {background-color: orange;}
+        .compras .titulo {border: 1px solid orange; color: orange;}
+        .compras span:last-child {line-height: 40px;}
+
+
+#piechart {position:relative; width: 900px; height: 500px; background-color: #F0F0F0;}
